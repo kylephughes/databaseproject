@@ -1,0 +1,21 @@
+<?php
+$username="hughes72";
+$password="fenway25";
+$database="hughes72";
+
+$fnmae=$_POST['First Name'];
+$lname=$_POST['Last Name'];
+$position=$_POST['Position'];
+$salary=$_POST['Salary'];
+$age=$_POST['Age'];
+
+mysql_connect("127.0.0.1",$username,$password);
+@mysql_select_db($database) or die( "Unable to select database");
+
+$query = "INSERT INTO player VALUES
+('','$fnmae','$lname','$position','$salary','$age')";
+
+mysql_query($query);
+
+mysql_close();
+?>

@@ -1,0 +1,77 @@
+body { margin: 0px;
+       padding: 0px;
+}
+
+#wrapper { width: 700px;
+           left: 50%;
+           margin-left: -350px;
+           position: absolute;
+}
+
+#title_bar { text-align: center;
+             width: 700px;
+             top: 0px;
+             margin: 1px;
+             position: absolute;
+}
+
+#status_bar {}
+
+#navbar { padding: 0;
+          margin-top: 70px
+          float: right;
+}
+
+#navbar li a { font-family: Arial;
+               font-size: 11 px;
+               text-decoration: none;
+               float: left;
+               padding; 10px;
+               background-color: #2175bc;
+               color: #fff;
+}
+
+#navbar li a:hover { background-color: #2586d7;
+                     margin-top: -2px;
+                     padding-bottom: 12px;
+}
+#side_bar { float:left;
+            position: absolute;
+            left: 225px;
+            top: 100px;
+            width: 186px;
+            font-size; .8em;
+}
+
+#navlist { margin: 0;
+           padding: 0;
+           list-style-type: none;
+}
+
+#navlist a, #navlist a:visited {
+display: block;
+padding: 2px 2px 2px 24px;
+border: 1px solid;
+border-color: #ddd #000 #000 #ddd;
+background-color: #2175bc;
+background-image:  url(assets/l1_down.jpg);
+background-repeat: no-repeat;
+background-position: 0% 50%;
+color: #fff;
+text-decoration: none;
+}
+
+#navlist a:hover {
+background-color: #2586d7;
+}
+
+#sidebar #navlist {
+background-color: #9F6F9F;
+background-repeat: no-repeat;
+background-position: 0% 50%;
+color: #333 !important;
+font-weight: bold;
+cursor: default;
+}
+
+#content {}

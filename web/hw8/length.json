@@ -1,0 +1,54 @@
+{
+"Factor" : [
+    {
+        "name": "Millimeters:",
+        "to"  : "1000.0",
+        "from": "0.001"
+    },
+    {
+        "name": "Centimeters:",
+        "to"  : "100.0",
+        "from": "0.01"
+    },
+    {
+        "name": "Inches:",
+        "to"  : "39.370079",
+        "from": "0.025411"
+    },
+    {
+        "name": "Feet:",
+        "to"  : "3.280840",
+        "from": "0.3048"
+    },
+    {
+        "name": "Yards:",
+        "to"  : "1.0936133",
+        "from": "0.9144"
+    },
+    {
+        "name": "Meters:",
+        "to"  : "1.0",
+        "from": "1.0"
+    },
+	{
+	"name": "Furlongs:",
+	"to"  : ".00497",
+	"from": "201.168"
+	},
+    {
+        "name": "Miles:",
+        "to"  : "0.00062137119",
+        "from": "1609.344"
+    },
+	{
+	"name": "Astronomical Units:",
+	"to"  : "6.68458712e-12",
+	"from": "149597870700"
+	},
+    {
+        "name": "Lightyears:",
+        "to"  : "1.0570234e-16",
+        "from": "9.4605284e+15"
+    }
+]
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+ "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <title>Unit Converter</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta name="Author" content="Kyle Hughes" />
+  <meta name="generator" content="vi" />
+
+  <link rel="stylesheet" type="text/css" href="units.css" />
+  <link rel="stylesheet" type="text/css" href="nav.css" />
+
+
+  <!-- have to load javascript first because it creates our form -->
+  <script type="text/javascript" src="AjaxFunctions.js"></script>
+  <script type="text/javascript" src="length.js"></script>
+  <script type="text/javascript" src="mass.js"></script>
+  <script type="text/javascript" src="volume.js"></script>
+  <style type="text/css">
+  <!--
+  a { text-decoration: none; }
+  -->
+  </style>
+
+</head>
+
+<body onload="show_tab('tab1');">
+
+<h1>Unit Converter</h1>
+
+<p>
+Type in any box and watch the magic happen.
+</p>
+
+<ul class="tabsbar">
+  <li id="tab1" onclick="show_tab(this.id)"> Length </li>
+  <li id="tab2" onclick="show_tab(this.id)"> Weight/Mass </li>
+  <li id="tab3" onclick="show_tab(this.id)"> Liquid Measure / Volume </li>
+</ul>
+
+<div class="content">
+
+<div class="cardstack" id="card1">
+
+<script type="text/javascript">
+makeBoxesLength();
+</script>
+
+</div>
+
+
+<div class="cardstack" id="card2">
+
+
+<script type="text/javascript">
+makeMassBoxes();
+</script>
+
+
+</div>
+
+<div class="cardstack" id="card3">
+
+<script type="text/javascript">
+makeVolumeBoxes();
+</script>
+
+
+
+</div>
+
+</div>
+
+<div>
+<br style="clear:both;" />
+</div>
+
+<div>
+<p>
+<a href="http://elvis.rowan.edu/~hughes72">K.Hughes</a>
+<a href="http://validator.w3.org/check/referer">XHTML</a>
+<a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3">
+   CSS3</a>
+</p>
+</div>
+<div>
+<p>
+<a href="IE_units.png">IE</a>
+<a href="Firefox_units.png">Mozilla</a>
+<a href="Safari_units.png">Safari</a>
+<a href="W3M_units.png">W3M</a>
+</p>
+</div>
+
+<!-- load JavaScript last -->
+<script type="text/javascript" src="nav.js"></script>
+
+</body>
+</html>

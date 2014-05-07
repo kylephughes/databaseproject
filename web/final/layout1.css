@@ -1,0 +1,177 @@
+body { margin: 0px;
+       padding: 0px;
+       background-color: #2190bc;	
+}
+#picture{
+position:relative;
+top:95%;
+left: 15%;
+}
+
+#mapform{
+left: 28.5%;
+top: 125px;
+position: relative;
+}
+#maps{
+left: 28.5%;
+position: relative;
+top: 280px;
+
+
+}
+p label {
+    display: inline-block;
+    width: 100px;;
+}
+p input {
+    width: 100px;
+    left: 700px;
+}
+#title_bar { text-align: center;
+             width: 700px;
+             top: 1px;
+             margin: 1px;
+             position: absolute;
+ 	     
+}
+
+#wrapper { width: 700px;
+           left: 50%;
+           margin-left: 400px;
+}
+
+
+#navbar {
+padding: 0px;
+text-align:center;
+margin-top: 48px;
+position: relative;
+}
+
+#navbar li {
+display: inline;
+}
+
+#navbar li a {
+font-family: Arial;
+font-size: 18px;
+text-decoration: none;
+float: left;
+width: 80px;
+padding: 20px;
+background-color: #2175bc;
+color: #fff;
+}
+
+#navbar li a:hover {
+background-color: #2586d7;
+margin-top:-2px;
+padding-bottom:22px;
+}
+
+#sidebar {
+position: relative;
+left: 0px;
+top: 310px;
+width: 200px;
+font-size: 20px;
+}
+
+#navlist {
+margin: 0px;
+padding: 0px;
+list-style-type: none;
+position:relative;
+}
+
+#navlist a, #navlist a:visited {
+display: block;
+padding: 2px 2px 2px 24px;
+border: 1px solid;
+border-color: #ddd #000 #000 #ddd;
+background-color: #2175bc;
+background-repeat: no-repeat;
+background-position: 0% 50%;
+color: #fff;
+text-decoration: none;
+}
+
+#navlist a:hover {
+background-color: #2586d7;
+}
+
+#sidebar #navlist {
+background-color: #2175bc;
+font-weight: bold;
+position:relative;
+}
+
+#content {
+padding-top: 60px; 
+text-align: left;
+left: 0px;
+bottom:-200px;
+positon: relative;
+}
+#search{
+text-align: left;
+bottom: -200px;
+position: relative;
+}
+#add{
+text-align: left;
+bottom: -300px;
+position: relative;
+}
+/*.tabsbar {
+    background: inherit;
+    border: 1px;
+    margin: 0px 0px;
+    padding-top: 5px;
+}
+*/
+/*.tabsbar li {
+    list-style-type: none;
+    display: block;
+    margin: 0px 0px;
+    border: 1px solid;
+    border-color: #ddd #000 #000 #ddd;
+    padding: 2px 2px 2px 24px;
+    background-color: #2175bc;
+    color: #fff;
+    font-weight: bold;
+}
+*/
+/*
+.tabsbar li.thistab {
+
+  /*  background-color: #55a;
+   * border: 0px;
+   * z-index: 1;
+   */
+}
+*/
+/*
+.tabsbar li:hover {
+   // background-color: #77c;
+background-color: #2586d7;
+color: #fff;
+//margin-top:-2px;
+//padding-bottom:20px;
+
+}
+*/
+/*
+.tabsbar li.thistab:hover {
+    background-color: #55a;
+}
+*/
+/*
+.cardstack {
+    position: absolute;
+    padding: 5px;
+    top: 0px;
+    left: 0px;
+}
+*/

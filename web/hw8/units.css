@@ -1,0 +1,9 @@
+/* units.css - units highlights
+ *
+ * D Provine, 13 Feb 2013
+ */
+
+h1         { font-size: 150%; }
+h2         { font-size: 110%; }
+td         { padding: 2px 5px; }
+

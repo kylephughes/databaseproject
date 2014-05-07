@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+    <title>Web Database Sample Inserting</title>
+</head>
+
+<body>
+<?php
+
+
+// access information in directory with no web access
+require_once('/export/home/hughes72/source_html/web/hw7/Connect.php');
+
+// other functions are right here
+require_once('DBfuncs.php');
+
+$dbh = ConnectDB();
+
+// was a name and phone entered?
+if ( isset($_GET['name'])   &&  !empty($_GET['name'])   && 
+     isset($_GET['movie'])  &&  !empty($_GET['movie'])     ) {
+
+    echo "<p>Adding " . $_GET['name'] . ", " .
+         $_GET['movie'] . " to database.</p>\n";
+
+    try {
+
+        $query = 'INSERT INTO movies (movie_id, title) ' .
+                 'VALUES (:name, :movie)';
+        $stmt = $dbh->prepare($query);
+
+        // Copying $_GET[] values to local variables, so nothing
+        // happens to values in $_GET[] array.
+        $name = $_GET['name'];
+        $movie = $_GET['movie'];
+        // Note each parameter must be bound separately
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':movie', $movie);
+
+        $stmt->execute();
+        $inserted = $stmt->rowCount();
+
+        $stmt = null;
+    
+
+    }
+    catch(PDOException $e)
+    {
+        die ('PDO error inserting(): ' . $e->getMessage() );
+    }
+
+} else {
+
+
+}
+
+$phonelist = ListAllPlayers($dbh);
+
+echo "<p>Here is the Actors in the Database now:<p>\n";
+$counter = 0;
+echo "<ul>\n";
+foreach ( $phonelist as $number ) {
+    $counter++;
+    echo "<li> <a href = $number->fname, $number->lname </li>\n";
+     
+
+}echo "</ul>\n";
+
+echo "<p> $counter record(s) returned.<p>\n";
+
+// uncomment next line for debugging
+# echo '<pre>'; print_r($phonelist); echo '</pre>';
+
+
+
+?>
+
+<h1>Add an entry</h1>
+
+
+<?php include('foot.php'); ?>
+
+</body>
+</html>
+

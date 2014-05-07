@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+    <title></title>
+  <link rel="stylesheet" type="text/css"
+        href="./layout1.css"/>
+</head>
+
+<body>
+<?php
+
+// access information in directory with no web access
+require_once('/export/home/vivona70/source_html/web/final/Connect.php');
+
+// other functions are right here
+require_once('DBfuncs.php');
+
+$dbh = ConnectDB();
+
+if ( isset($_GET['fname'])   &&  !empty($_GET['fname'])   &&
+     isset($_GET['lname'])   &&  !empty($_GET['lname']) &&
+     isset($_GET['position'])  &&  !empty($_GET['position']) &&
+     isset($_GET['salary']) && !empty($_GET['salary']) &&
+     isset($_GET['age']) && !empty($_GET['age'])    ) {
+
+    try {
+
+        $query = 'UPDATE player 
+                  SET position=:position,
+                      salary=:salary,
+                      age=:age
+                  WHERE fnmae=:fname AND
+                        lname=:lname';
+        $stmt = $dbh->prepare($query);
+
+        // Copying $_GET[] values to local variables, so nothing
+        // happens to values in $_GET[] array.
+        $fname = $_GET['fname'];
+        $lname= $_GET['lname'];
+        $position = $_GET['position'];
+        $salary = $_GET['salary'];
+        $age = $_GET['age'];
+
+        // Note each parameter must be bound separately
+        $stmt->bindParam(':fname', $fname);
+        $stmt->bindParam(':lname',$lname);
+        $stmt->bindParam(':position', $position);
+        $stmt->bindParam(':salary', $salary);
+        $stmt->bindParam(':age',$age);
+        $stmt->execute();
+        $edited = $stmt->rowCount();
+
+        $stmt = null;
+    echo"<div id='wrapper'>";
+    echo"<div id='edit'>";
+    echo"<p> Modified $edited player(s).</p>\n";
+    echo"</div>";
+    echo"</div>";
+
+    }
+    catch(PDOException $e)
+    {
+        die ('PDO error inserting(): ' . $e->getMessage() );
+    }
+
+}
+
+
+?>
+<!-- note that not listing an action or a method defaults to
+     "this php file runs itself" and "use GET" -->
+
+<div id="sidebar">
+   <ul id="navlist">
+     <li><a href=search_roster.php>Search Players</a></li>
+     <li><a href=addPlayer.php>Add Players</a></li>
+     <li><a href=removePlayer.php>Remove Players</a></li>
+     <li><a href=editPlayer.php>Edit Players</a></li>
+   </ul>
+</div>
+
+
+<div id="wrapper">
+
+<div id="titlebar">
+<h1 id="title_bar">Edit a Player</h1>
+</div>
+
+<div id="status_bar">
+</div>
+
+<div id="navbar">
+   <ul>
+     <li><a href=welcome.php>Home</a></li>
+     <li><a href=roster.php>Roster</a></li>
+     <li><a href=schedule.html>Schedule</a></li>
+     <li><a href=contacts.html>Contacts</a></li>
+     <li><a href=tickets.html>Tickets</a></li>
+   </ul>
+
+</div>
+
+<div id="content">
+
+
+
+<p>Enter the name of the player you would like to edit.</p>
+<form>
+   <p>
+   <label>First Name: </label><input type="text" name='fname'><br>
+   <label>Last Name:  </label><input type="text" name='lname'><br>
+
+   <br>
+
+   <label>Position:   </label><input type="text" name='position'><br>
+   <label>Salary:     </label><input type="text" name='salary'><br>
+   <label>Age:        </label><input type="text" name='age'><br>
+               <input type="submit">
+   </p>
+</form>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE htmo PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+
+
+<body>
+<h1> Add your lesson! </h1>
+
+
+<form>
+
+  Name: <input type = "text" name ='name'> <br>
+  Date: <input type = "text" name ='date'> <br>
+  Description of lesson: <input type = "text" name = 'lesson'> <br>
+  <input type = "submit">
+</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+ "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>Sports Management System</title>
+  <meta http-equiv="Content-Type"
+        content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="Author" content="Eric Dijamco, Kyle Hughes, Michael Vivona" />
+
+  <link rel="stylesheet" type="text/css"
+        href="./layout1.css"/>
+
+</head>
+
+<body>
+
+<div id="sidebar">
+   <ul id="navlist">
+     <li><a href="#">Search Players</a></li>
+     <li><a href="addPlayer.php">Add Players</a></li>
+     <li><a href="#">Remove Players</a></li>
+     <li><a href="#">Edit Players</a></li>
+   </ul>
+</div>
+
+
+<div id="wrapper">
+
+<div id="titlebar">
+<h1 id="title_bar">Sports Management System</h1>
+</div>
+
+<div id="status_bar">
+</div>
+
+<div id="navbar">
+   <ul>
+
+     <li><a href=welcome.php>Home</a></li>
+     <li><a href="http://elvis.rowan.edu/~vivona70/web/final/schedule.html">
+                 Schedule</a></li>
+     <li><a href="http://elvis.rowan.edu/~vivona70/web/final/contacts.html">
+                 Contacts</a></li>
+     <li><a href="http://elvis.rowan.edu/~vivona70/web/final/roster.php>
+                  Roster</a></li>
+
+     <li><a href="http://elvis.rowan.edu/~vivona70/web/final/tickets.html">
+                  Tickets</a></li>
+   </ul>
+
+</div>
+
+<div id="content">
+<?php
+
+// access information in directory with no web access
+require_once('/export/home/vivona70/source_html/web/final/Connect.php');
+
+// other functions are right here
+require_once('DBfuncs.php');
+
+
+$dbh = ConnectDB();
+
+$playerlist = ListAllPlayers($dbh);
+
+echo "<p>Here is the data:<p>\n";
+$counter = 0;
+echo "<ul>\n";
+foreach ( $playerlist as $number ) {
+    $counter++;
+    echo "    <li> $number->fnmae, $number->lname, 
+                   $number->position, $number->salary,
+                   $number->age ";
+    echo "</li>\n";
+}
+echo "</ul>\n";
+
+echo "<p> $counter record(s) returned.<p>\n";
+?>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
