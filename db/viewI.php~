@@ -1,0 +1,37 @@
+<?php
+  $orderID=$_POST['orderID'];
+
+  // access information in directory with no web access
+  require_once('/home/crouch59/public_html/db/Connect.php');
+
+  $dbh = ConnectDB();
+
+ $query = "select UPC,Pname from product where UPC in (select UPC from contains where orderID = :orderID)";
+  $stmt = $dbh->prepare($query);
+  $stmt->bindParam(':orderID',$orderID);
+  $stmt->execute();
+  $categoryData = $stmt->fetchAll(PDO::FETCH_OBJ);
+  $stmt = null;
+echo '<a href="/~crouch59/db/start.php">Home';
+echo '<h2>Products in your order</h2>';
+
+     echo "<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table, td, th {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>";
+     echo "<table><tr><th> UPC </th>";
+     echo " <th> Product Name </th></tr>";
+
+  foreach ( $categoryData as $category ) {
+    echo "<tr><td> $category->UPC</td>";
+    echo "<td>$category->Pname</td></tr>";
+  }
+
+ echo "</table>";
+?>

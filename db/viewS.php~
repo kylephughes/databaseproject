@@ -1,0 +1,34 @@
+<?php
+  $customerID=$_POST['customerID'];
+
+  // access information in directory with no web access
+  require_once('/home/crouch59/public_html/db/Connect.php');
+
+  $dbh = ConnectDB();
+
+  $query = "select Pname,category from product where category in (select category from product where UPC in (select UPC from contains where orderID in (select orderID from orders where customerID= :customerID))) and Pname not in (select Pname from product where UPC in (select UPC from contains where orderID in (select orderID from orders where customerID = :customerID))) and category in (select category from product join (contains join orders using(orderID)) using(UPC) where customerID = :customerID group by category having count(*) >= all (select count(*) from product join (contains join orders using(orderID)) using(UPC) where customerID=:customerID group by category)) order by category";
+  $stmt = $dbh->prepare($query);
+  $stmt->bindParam('customerID',$customerID);
+  $stmt->execute();
+  $categoryData = $stmt->fetchAll(PDO::FETCH_OBJ);
+  $stmt = null; 
+     echo "<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table, td, th {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>";
+     echo "<table><tr><th> Product Name </th>";
+     echo " <th> Category </th></tr>";
+
+  foreach ( $categoryData as $category ) {
+    echo "<tr><td> $category->Pname</td>";
+    echo "<td>$category->category</td></tr>";
+  }
+
+ echo "</table>";
+?>

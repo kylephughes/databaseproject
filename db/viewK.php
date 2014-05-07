@@ -1,0 +1,43 @@
+<?php
+  $customerID=$_POST['customerID'];
+
+  // access information in directory with no web access
+  require_once('/home/crouch59/public_html/db/Connect.php');
+
+  $dbh = ConnectDB();
+
+ $query = "select orderID,orderdate,shippingstatus from orders where customerID = :customerID";
+  $stmt = $dbh->prepare($query);
+  $stmt->bindParam(':customerID',$customerID);
+  $stmt->execute();
+  $categoryData = $stmt->fetchAll(PDO::FETCH_OBJ);
+  $stmt = null;
+echo "<a href = '/~crouch59/db/start.php'>Home</a>";
+echo "<h3> Orders Placed </h3>";
+     echo "<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table, td, th {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>";
+
+ 
+     echo "<table><tr><th> orderID </th>";
+     echo " <th> orderdate </th> <th> shippingstatus </th><th>Track Order</th></tr>";
+
+  foreach ( $categoryData as $category ) {
+ 
+    echo "<tr><td>$category->orderID</td>";
+    echo "<td>$category->orderdate</td> <td> $category->shippingstatus</td>";
+    echo '<td> <form name = "track" method="post" action ="viewI.php">';
+echo "<input type = 'hidden' name = 'orderID' value='$category->orderID'>"; 
+    echo '<input type = "submit" value ="track"> </form></td></tr>';
+  }
+
+ echo "</table>";
+?>
+

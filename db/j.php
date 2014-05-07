@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rate</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="Author" content="Christopher Crouch">
+    <meta name="Author" content="Kyle Hughes">
+  </head>
+  <body>
+ 
+    <h2>Rate a Supplier</h2>
+
+
+    <h4>Choose a customerID and supplier to rate </h4>
+    <form name = "rateSupplier" method = "post" action ="addRate.php">
+       CustomerID<select name="customerID">
+      <?php
+        require_once('/home/crouch59/public_html/db/Connect.php');
+
+        $dbh = ConnectDB();
+        $query = "select customerID from customer";
+        $stmt = $dbh->prepare($query);
+        $stmt->execute();
+        $categoryData = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $stmt = null;
+        foreach ( $categoryData as $category ) {
+          echo "<option value=\"$category->customerID\">$category->customerID</  option>";
+        }
+      ?>
+      </select>
+
+
+
+      SupplierID<select name="supplierID">
+      <?php 
+
+	
+	$dbh = ConnectDB();
+	$query = "select supplierID from supplier";
+	$stmt = $dbh->prepare($query);
+	$stmt->execute();
+	$categoryData = $stmt->fetchAll(PDO::FETCH_OBJ);
+	$stmt = null;
+	foreach ( $categoryData as $category ) {
+	  echo "<option value=\"$category->supplierID\">$category->supplierID</option>";
+	}
+      ?>
+      </select>
+     Rating(0-5)<input type= "text" name = "rating">
+      <input type = "submit">
+    </form>
+ 
+  </body>
+</html>
